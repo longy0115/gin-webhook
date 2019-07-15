@@ -95,7 +95,7 @@ func verifySignature(c *gin.Context) (bool, error) {
 
 // hmac-sha1
 func hmacSha1(payloadBody []byte) string {
-	h := hmac.New(sha1.New, []byte("password"))
+	h := hmac.New(sha1.New, []byte("webhoods-ucat"))
 	h.Write(payloadBody)
 	return "sha1=" + hex.EncodeToString(h.Sum(nil))
 }
