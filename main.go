@@ -53,12 +53,12 @@ func outShell(command string) (string, string, error) {
 // Github Webhooks Post请求处理函数
 func gitpush(c *gin.Context) {
 	// 验证签名
-	if matched, _ := verifySignature(c); !matched {
-		err := "Signatures didn't match!"
-		c.String(http.StatusForbidden, err)
-		fmt.Println(err)
-		return
-	}
+	// if matched, _ := verifySignature(c); !matched {
+	// 	err := "Signatures didn't match!"
+	// 	c.String(http.StatusForbidden, err)
+	// 	fmt.Println(err)
+	// 	return
+	// }
 
 	fmt.Println("Signatures is match! go!")
 
@@ -85,11 +85,8 @@ func verifySignature(c *gin.Context) (bool, error) {
 
 	// 获取请求头中的签名信息
 	hSignature := c.GetHeader("X-Hub-Signature")
-	fmt.Println(hSignature)
-	fmt.Println("hSignature")
 	// 计算Payload签名
 	signature := hmacSha1(payloadBody)
-	fmt.Println(signature)
 	return (hSignature == signature), nil
 
 }
