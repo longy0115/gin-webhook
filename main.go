@@ -85,7 +85,8 @@ func verifySignature(c *gin.Context) (bool, error) {
 
 	// 获取请求头中的签名信息
 	hSignature := c.GetHeader("X-Hub-Signature")
-
+	fmt.Println(hSignature)
+	fmt.Println("hSignature")
 	// 计算Payload签名
 	signature := hmacSha1(payloadBody)
 	fmt.Println(signature)
