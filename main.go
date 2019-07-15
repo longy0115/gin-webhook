@@ -88,7 +88,7 @@ func verifySignature(c *gin.Context) (bool, error) {
 
 	// 计算Payload签名
 	signature := hmacSha1(payloadBody)
-
+	fmt.Println(signature)
 	return (hSignature == signature), nil
 
 }
