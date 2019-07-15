@@ -63,6 +63,15 @@ func gitpush(c *gin.Context) {
 	fmt.Println("Signatures is match! go!")
 
 	// 你自己的业务逻辑......
+	cmd := "cd /home/dnmp/www/doris-ucat && git pull"
+	out, errout, err := outShell(cmd)
+	if err != nil {
+		log.Printf("error: %v\n", err)
+	}
+	fmt.Println("--- stdout ---")
+	fmt.Println(out)
+	fmt.Println("--- stderr ---")
+	fmt.Println(errout)
 
 	c.String(http.StatusOK, "OK")
 }
